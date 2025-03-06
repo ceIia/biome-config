@@ -1,0 +1,103 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "vcs": {
+    "enabled": false,
+    "clientKind": "git",
+    "useIgnoreFile": false
+  },
+  "files": {
+    "ignoreUnknown": false,
+    "ignore": [
+      "**/.next/**",
+      "**/node_modules/**",
+      "**/.turbo/**",
+      "**/build/**",
+      "**/dist/**"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space"
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "complexity": {
+        "noUselessStringConcat": "error",
+        "noUselessUndefinedInitialization": "error",
+        "useDateNow": "error"
+      },
+      "correctness": {
+        "noUnusedVariables": "error",
+        "noUnusedFunctionParameters": "error",
+        "noUnusedImports": "error",
+        "noConstantMathMinMaxClamp": "error",
+        "noUnusedPrivateClassMembers": "error",
+        "useArrayLiterals": "error",
+        "useHookAtTopLevel": "error"
+      },
+      "style": {
+        "noNonNullAssertion": "off",
+        "useExplicitLengthCheck": "error",
+        "noShoutyConstants": "error",
+        "noYodaExpression": "error",
+        "useConsistentBuiltinInstantiation": "error",
+        "useConsistentArrayType": "error",
+        "useDefaultSwitchClause": "error",
+        "useFragmentSyntax": "error",
+        "useShorthandArrayType": "error",
+        "useShorthandAssign": "error",
+        "useThrowNewError": "error",
+        "useThrowOnlyError": "error"
+      },
+      "performance": {
+        "all": true
+      },
+      "suspicious": {
+        "noConsole": {
+          "level": "error",
+          "options": {
+            "allow": ["assert", "error", "info", "warn"]
+          }
+        },
+        "noEmptyBlockStatements": "error",
+        "noEvolvingTypes": "error",
+        "useErrorMessage": "error",
+        "useNumberToFixedDigitsArgument": "error"
+      },
+      "nursery": {
+        "useSortedClasses": "warn",
+        "useTrimStartEnd": "error",
+        "useDeprecatedReason": "error",
+        "useAtIndex": "error",
+        "useCollapsedIf": "error",
+        "useAriaPropsSupportedByRole": "error",
+        "noUselessEscapeInRegex": "error",
+        "noTemplateCurlyInString": "error",
+        "noSubstr": "error",
+        "noStaticElementInteractions": "error",
+        "noImgElement": "error",
+        "noHeadImportInDocument": "error",
+        "noHeadElement": "error",
+        "noEnum": "error",
+        "noDuplicateProperties": "error",
+        "noDuplicateElseIf": "error",
+        "noDuplicateCustomProperties": "error",
+        "noDocumentCookie": "error",
+        "noDocumentImportInPage": "error"
+      },
+      "security": { "noDangerouslySetInnerHtmlWithChildren": "error" }
+    },
+    "ignore": ["apps/front/hypertune/**"]
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double",
+      "semicolons": "asNeeded"
+    }
+  }
+}
