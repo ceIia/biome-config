@@ -1,0 +1,30 @@
+{
+  "name": "@c14l/biome-config",
+  "version": "1.0.0",
+  "description": "A minimalist yet strict Biome configuration for modern web projects",
+  "main": "biome.jsonc",
+  "files": [
+    "biome.jsonc",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "biome",
+    "biomejs",
+    "config",
+    "linting",
+    "formatting",
+    "javascript",
+    "typescript"
+  ],
+  "author": "Célia Bourial",
+  "license": "WTFPL",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c14l/biome-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/c14l/biome-config/issues"
+  },
+  "homepage": "https://github.com/c14l/biome-config#readme"
+}

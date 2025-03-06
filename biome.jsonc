@@ -17,7 +17,7 @@
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "space"
+    "indentStyle": "space" // i don't like tabs, but you can change this to `tab` if you want
   },
   "organizeImports": {
     "enabled": true
@@ -27,77 +27,78 @@
     "rules": {
       "recommended": true,
       "complexity": {
-        "noUselessStringConcat": "error",
-        "noUselessUndefinedInitialization": "error",
-        "useDateNow": "error"
+        "noUselessStringConcat": "error", // best practice
+        "noUselessUndefinedInitialization": "error", // best practice
+        "useDateNow": "error" // best practice
       },
       "correctness": {
-        "noUnusedVariables": "error",
-        "noUnusedFunctionParameters": "error",
-        "noUnusedImports": "error",
-        "noConstantMathMinMaxClamp": "error",
-        "noUnusedPrivateClassMembers": "error",
-        "useArrayLiterals": "error",
-        "useHookAtTopLevel": "error"
+        "noUnusedVariables": "error", // best practice
+        "noUnusedFunctionParameters": "error", // best practice
+        "noUnusedImports": "error", // best practice
+        "noConstantMathMinMaxClamp": "error", // best practice
+        "noUnusedPrivateClassMembers": "error", // best practice
+        "useArrayLiterals": "error", // best practice
+        "useHookAtTopLevel": "error" // best practice
       },
       "style": {
-        "noNonNullAssertion": "off",
-        "useExplicitLengthCheck": "error",
-        "noShoutyConstants": "error",
-        "noYodaExpression": "error",
-        "useConsistentBuiltinInstantiation": "error",
-        "useConsistentArrayType": "error",
-        "useDefaultSwitchClause": "error",
-        "useFragmentSyntax": "error",
-        "useShorthandArrayType": "error",
-        "useShorthandAssign": "error",
-        "useThrowNewError": "error",
-        "useThrowOnlyError": "error"
+        "noNonNullAssertion": "off", // you should always justify and double-check before asserting
+        "useExplicitLengthCheck": "error", // you'd be surprised how many bugs this catches (especially in React)
+        "noShoutyConstants": "error", // avoid pointless redundancy
+        "noYodaExpression": "error", // ensures consistency and removes burden from developer
+        "useConsistentBuiltinInstantiation": "error", // best practice
+        "useConsistentArrayType": "error", // best practice
+        "useDefaultSwitchClause": "error", // improves your code reliability by forcing you to handle your "errors"/edge cases
+        "useFragmentSyntax": "error", // saves keystrokes and improves readability
+        "useShorthandArrayType": "error", // personal preference
+        "useShorthandAssign": "error", // personal preference
+        "useThrowNewError": "error", // it's better to be explicit
+        "useThrowOnlyError": "error" // it's easier to debug and work with the Error object when you throw it
       },
       "performance": {
-        "all": true
+        "all": true // i like to be explicit about performance issues
       },
       "suspicious": {
         "noConsole": {
-          "level": "error",
+          "level": "error", // helps you not forget to remove console logs. useful for debug, but dangerous for prod
           "options": {
-            "allow": ["assert", "error", "info", "warn"]
+            "allow": ["assert", "error", "info", "warn"] // alternatively, this forces you to be more intentional about your logging
           }
         },
-        "noEmptyBlockStatements": "error",
-        "noEvolvingTypes": "error",
-        "useErrorMessage": "error",
-        "useNumberToFixedDigitsArgument": "error"
+        "noEmptyBlockStatements": "error", // this is a good way to catch potential bugs
+        "noEvolvingTypes": "error", // you can't always see when a variable is evolving into any or something else
+        "useErrorMessage": "error", // it's better to be explicit
+        "useNumberToFixedDigitsArgument": "error" // it's better to be explicit
       },
       "nursery": {
-        "useSortedClasses": "warn",
-        "useTrimStartEnd": "error",
-        "useDeprecatedReason": "error",
-        "useAtIndex": "error",
-        "useCollapsedIf": "error",
-        "useAriaPropsSupportedByRole": "error",
-        "noUselessEscapeInRegex": "error",
-        "noTemplateCurlyInString": "error",
-        "noSubstr": "error",
-        "noStaticElementInteractions": "error",
-        "noImgElement": "error",
-        "noHeadImportInDocument": "error",
-        "noHeadElement": "error",
-        "noEnum": "error",
-        "noDuplicateProperties": "error",
-        "noDuplicateElseIf": "error",
-        "noDuplicateCustomProperties": "error",
-        "noDocumentCookie": "error",
-        "noDocumentImportInPage": "error"
+        "useSortedClasses": "warn", // personal preference, still unsure about this. especially since it has no on-save autofix yet (as of March 6, 2025)
+        "useTrimStartEnd": "error", // personal preference
+        "useDeprecatedReason": "error", // you should always give a reason and offer an alternative to your users
+        "useAtIndex": "error", // cleaner and faster, especially for accessing last item in array (e.g. `arr.at(-1)` has one less accessor `arr[arr.length - 1]`)
+        "useCollapsedIf": "error", // will help you improve your code readability and force you to think about the logic of your code
+        "useAriaPropsSupportedByRole": "error", // prevents you from adding aria props that aren't supported by the element's role, avoiding a false sense of accessibility which gives no actual benefit to users with disabilities
+        "noUselessEscapeInRegex": "error", // personal preference
+        "noTemplateCurlyInString": "error", // helps you realize when you're using the wrong quotes
+        "noSubstr": "error", // personal preference, this it not php ffs
+        "noStaticElementInteractions": "error", // static elements are more difficult to make interactive and properly accessible
+        "noImgElement": "error", // pushes you to use next/image in nextjs projects to improve LCP and performance
+        "noHeadImportInDocument": "error", // library-specific bug catch
+        "noHeadElement": "error", // library-specific bug catch
+        "noEnum": "error", // https://www.youtube.com/watch?v=jjMbPt_H3RQ
+        "noDuplicateProperties": "error", // helps you catch potential bugs
+        "noDuplicateElseIf": "error", // you might've duplicated logic or created an if path that will never be reached
+        "noDuplicateCustomProperties": "error", // helps you catch potential bugs
+        "noDocumentCookie": "error", // library-specific bug catch, forces you to be intentional about how you interface with cookies
+        "noDocumentImportInPage": "error" // library-specific bug catch, forces you to be intentional about how you interface with the document object
       },
-      "security": { "noDangerouslySetInnerHtmlWithChildren": "error" }
-    },
-    "ignore": ["apps/front/hypertune/**"]
+      "security": {
+        "noDangerouslySetInnerHtmlWithChildren": "error" // forces you to explain why you have no alternative to using this property, and think about potential sanitization issues
+      }
+    }
   },
   "javascript": {
     "formatter": {
-      "quoteStyle": "double",
-      "semicolons": "asNeeded"
+      "quoteStyle": "double", // default, no real opinion here
+      "semicolons": "asNeeded" // makes things feel cleaner
     }
   }
 }
