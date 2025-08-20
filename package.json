@@ -1,7 +1,7 @@
 {
   "name": "@c14l/biome-config",
-  "version": "1.0.0",
-  "description": "A minimalist yet strict Biome configuration for modern web projects",
+  "version": "2.0.0",
+  "description": "A minimalist yet strict Biome configuration",
   "main": "biome.jsonc",
   "files": [
     "biome.jsonc",
@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/c14l/biome-config/issues"
   },
-  "homepage": "https://github.com/c14l/biome-config#readme"
+  "homepage": "https://github.com/c14l/biome-config#readme",
+  "devDependencies": {
+    "@biomejs/biome": "2.0.6"
+  }
 }

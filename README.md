@@ -6,7 +6,7 @@ a minimalist Biome configuration i use in my projects with rather strict linting
 
 ```bash
 # using bun
-bun add --dev @c14l/biome-config @biomejs/biome
+bun add --dev --exact @c14l/biome-config @biomejs/biome
 ```
 
 ## usage
@@ -15,7 +15,7 @@ after installation, create a `biome.json` file in your project root and extend t
 
 ```json
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
   "extends": ["@c14l/biome-config"]
 }
 ```
@@ -24,7 +24,7 @@ you can also override specific settings:
 
 ```json
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
   "extends": ["@c14l/biome-config"],
   "formatter": {
     "indentStyle": "tab"
@@ -58,7 +58,13 @@ for the best experience in VS Code or Cursor, add these settings to your `settin
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.codeActionsOnSave": {
+    "source.action.useSortedAttributes.biome": "explicit", // sorts imports on save
+    "source.action.useSortedKeys.biome": "explicit", // sorts object keys on save
+    "source.fixAll.biome": "explicit", // fixes all errors on save
+    "source.organizeImports.biome": "explicit" // sorts imports on save
+  }
 }
 ```
 

@@ -1,104 +1,144 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "vcs": {
-    "enabled": false,
-    "clientKind": "git",
-    "useIgnoreFile": false
+  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on",
+        "useSortedAttributes": "on",
+        "useSortedKeys": "on"
+      }
+    }
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": [
-      "**/.next/**",
-      "**/node_modules/**",
-      "**/.turbo/**",
-      "**/build/**",
-      "**/dist/**"
+    "includes": [
+      "**",
+      "!package.json",
+      "!**/.next/**",
+      "!**/node_modules/**",
+      "!**/.turbo/**",
+      "!**/build/**",
+      "!**/dist/**"
     ]
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "space" // i don't like tabs, but you can change this to `tab` if you want
-  },
-  "organizeImports": {
-    "enabled": true
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true,
-      "complexity": {
-        "noUselessStringConcat": "error", // best practice
-        "noUselessUndefinedInitialization": "error", // best practice
-        "useDateNow": "error" // best practice
-      },
-      "correctness": {
-        "noUnusedVariables": "error", // best practice
-        "noUnusedFunctionParameters": "error", // best practice
-        "noUnusedImports": "error", // best practice
-        "noConstantMathMinMaxClamp": "error", // best practice
-        "noUnusedPrivateClassMembers": "error", // best practice
-        "useArrayLiterals": "error", // best practice
-        "useHookAtTopLevel": "error" // best practice
-      },
-      "style": {
-        "noNonNullAssertion": "off", // you should always justify and double-check before asserting
-        "useExplicitLengthCheck": "error", // you'd be surprised how many bugs this catches (especially in React)
-        "noShoutyConstants": "error", // avoid pointless redundancy
-        "noYodaExpression": "error", // ensures consistency and removes burden from developer
-        "useConsistentBuiltinInstantiation": "error", // best practice
-        "useConsistentArrayType": "error", // best practice
-        "useDefaultSwitchClause": "error", // improves your code reliability by forcing you to handle your "errors"/edge cases
-        "useFragmentSyntax": "error", // saves keystrokes and improves readability
-        "useShorthandArrayType": "error", // personal preference
-        "useShorthandAssign": "error", // personal preference
-        "useThrowNewError": "error", // it's better to be explicit
-        "useThrowOnlyError": "error" // it's easier to debug and work with the Error object when you throw it
-      },
-      "performance": {
-        "all": true // i like to be explicit about performance issues
-      },
-      "suspicious": {
-        "noConsole": {
-          "level": "error", // helps you not forget to remove console logs. useful for debug, but dangerous for prod
-          "options": {
-            "allow": ["assert", "error", "info", "warn"] // alternatively, this forces you to be more intentional about your logging
-          }
-        },
-        "noEmptyBlockStatements": "error", // this is a good way to catch potential bugs
-        "noEvolvingTypes": "error", // you can't always see when a variable is evolving into any or something else
-        "useErrorMessage": "error", // it's better to be explicit
-        "useNumberToFixedDigitsArgument": "error" // it's better to be explicit
-      },
-      "nursery": {
-        "useSortedClasses": "warn", // personal preference, still unsure about this. especially since it has no on-save autofix yet (as of March 6, 2025)
-        "useTrimStartEnd": "error", // personal preference
-        "useDeprecatedReason": "error", // you should always give a reason and offer an alternative to your users
-        "useAtIndex": "error", // cleaner and faster, especially for accessing last item in array (e.g. `arr.at(-1)` has one less accessor `arr[arr.length - 1]`)
-        "useCollapsedIf": "error", // will help you improve your code readability and force you to think about the logic of your code
-        "useAriaPropsSupportedByRole": "error", // prevents you from adding aria props that aren't supported by the element's role, avoiding a false sense of accessibility which gives no actual benefit to users with disabilities
-        "noUselessEscapeInRegex": "error", // personal preference
-        "noTemplateCurlyInString": "error", // helps you realize when you're using the wrong quotes
-        "noSubstr": "error", // personal preference, this it not php ffs
-        "noStaticElementInteractions": "error", // static elements are more difficult to make interactive and properly accessible
-        "noImgElement": "error", // pushes you to use next/image in nextjs projects to improve LCP and performance
-        "noHeadImportInDocument": "error", // library-specific bug catch
-        "noHeadElement": "error", // library-specific bug catch
-        "noEnum": "error", // https://www.youtube.com/watch?v=jjMbPt_H3RQ
-        "noDuplicateProperties": "error", // helps you catch potential bugs
-        "noDuplicateElseIf": "error", // you might've duplicated logic or created an if path that will never be reached
-        "noDuplicateCustomProperties": "error", // helps you catch potential bugs
-        "noDocumentCookie": "error", // library-specific bug catch, forces you to be intentional about how you interface with cookies
-        "noDocumentImportInPage": "error" // library-specific bug catch, forces you to be intentional about how you interface with the document object
-      },
-      "security": {
-        "noDangerouslySetInnerHtmlWithChildren": "error" // forces you to explain why you have no alternative to using this property, and think about potential sanitization issues
-      }
-    }
+    "indentStyle": "space" // i don't like tabs, but you can override this to `tab` if you want
   },
   "javascript": {
     "formatter": {
       "quoteStyle": "double", // default, no real opinion here
       "semicolons": "asNeeded" // makes things feel cleaner
     }
+  },
+  "linter": {
+    "domains": {
+      "next": "all",
+      "project": "all",
+      "react": "all"
+    },
+    "enabled": true,
+    "rules": {
+      "a11y": {
+        "noStaticElementInteractions": "error", // static elements are more difficult to make interactive and properly accessible
+        "useAriaPropsSupportedByRole": "error" // static elements are more difficult to make interactive and properly accessible
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": "error",
+        "noForEach": "error",
+        "noUselessEscapeInRegex": "error",
+        "noUselessStringConcat": "error",
+        "noUselessUndefinedInitialization": "error",
+        "useDateNow": "error",
+        "useSimplifiedLogicExpression": "error",
+        "useWhile": "error"
+      },
+      "correctness": {
+        "noConstantMathMinMaxClamp": "error",
+        "noUndeclaredVariables": "error",
+        "noUnusedFunctionParameters": "error",
+        "noUnusedImports": "error",
+        "noUnusedPrivateClassMembers": "error",
+        "noUnusedVariables": "error",
+        "useHookAtTopLevel": "error"
+      },
+      "nursery": {
+        "noSecrets": "error",
+        "noShadow": "error", // should help you catch useless code/accidental drift
+        "useSortedClasses": "warn" // should help you catch useless code/accidental drift
+      },
+      "performance": {
+        "noDelete": "error", // it's a dangerous operator, use undefined instead
+        "noDynamicNamespaceImportAccess": "error",
+        "noNamespaceImport": "error", // difficult to tree shake
+        "noReExportAll": "error",
+        "useTopLevelRegex": "error"
+      },
+      "recommended": true,
+      "security": {
+        "noDangerouslySetInnerHtmlWithChildren": "error" // forces you to explain why you have no alternative to using this property, and think about potential sanitization issues
+      },
+      "style": {
+        "noDefaultExport": "error",
+        "noEnum": "error",
+        "noInferrableTypes": "error",
+        "noNonNullAssertion": "off",
+        "noParameterAssign": "error",
+        "noShoutyConstants": "error",
+        "noSubstr": "error",
+        "noUnusedTemplateLiteral": "error",
+        "noUselessElse": "error",
+        "noYodaExpression": "error",
+        "useArrayLiterals": "error",
+        "useAsConstAssertion": "error",
+        "useAtIndex": "error",
+        "useCollapsedIf": "error",
+        "useConsistentArrayType": "error",
+        "useConsistentBuiltinInstantiation": "error",
+        "useDefaultParameterLast": "error",
+        "useDefaultSwitchClause": "error",
+        "useDeprecatedReason": "error",
+        "useEnumInitializers": "error",
+        "useExplicitLengthCheck": "error",
+        "useFilenamingConvention": {
+          "options": {
+            "filenameCases": ["export", "kebab-case"] // personal preference
+          }
+        },
+        "useFragmentSyntax": "error",
+        "useNumberNamespace": "error",
+        "useSelfClosingElements": "error",
+        "useShorthandAssign": "error",
+        "useSingleVarDeclarator": "error",
+        "useThrowNewError": "error",
+        "useThrowOnlyError": "error",
+        "useTrimStartEnd": "error"
+      },
+      "suspicious": {
+        "noAlert": "error",
+        "noConsole": {
+          "level": "error", // helps you not forget to remove console logs. useful for debug, but dangerous for prod
+          "options": {
+            "allow": ["assert", "error", "info", "warn"] // alternatively, this forces you to be more intentional about your logging
+          }
+        },
+        "noDocumentCookie": "error",
+        "noDocumentImportInPage": "error",
+        "noDuplicateCustomProperties": "error",
+        "noDuplicateElseIf": "error",
+        "noDuplicateProperties": "error",
+        "noEmptyBlockStatements": "error",
+        "noEvolvingTypes": "error",
+        "noTemplateCurlyInString": "error",
+        "useAwait": "error", // forces you to be intentional about your async code
+        "useErrorMessage": "error",
+        "useNumberToFixedDigitsArgument": "error" // forces you to be intentional about your async code
+      }
+    }
+  },
+  "vcs": {
+    "clientKind": "git",
+    "enabled": false,
+    "useIgnoreFile": false
   }
 }
